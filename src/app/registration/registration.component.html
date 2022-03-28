@@ -1,0 +1,10 @@
+<p>registration works!</p>
+
+
+<ul class="books">
+    <li *ngFor="let book of books">
+        <span>{{book.id}}</span> {{book.name}} 
+    </li>
+</ul>
+
+<div class="error" *ngIf="errorMessage"> {{errorMessage}}</div>
