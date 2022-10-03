@@ -15,6 +15,11 @@ import { ListUserComponent } from './list-user/list-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+
+import { ScrollingModule } from '@angular/cdk/scrolling'; //for virtual Scrolling
 
 @NgModule({
   declarations: [
@@ -26,14 +31,20 @@ import { LoginUserComponent } from './login-user/login-user.component';
     ListUserComponent,
     AddUserComponent,
     EditUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    DialogExampleComponent
   ],
+  entryComponents:[DialogExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    ScrollingModule
+    
   ],
   providers: [BookService,
   {provide:HTTP_INTERCEPTORS,

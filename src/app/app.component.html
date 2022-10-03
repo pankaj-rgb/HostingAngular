@@ -1,7 +1,420 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 
-<router-outlet></router-outlet> 
+
+
+<div>
+    <button class="btn btn-primary">New</button>
+    <button mat-button> new datas </button>
+    <button mat-raised-button>data</button>
+    <button mat-flat-button> Click me</button>
+    <button mat-stroked-button> Click</button>
+
+</div>
+
+<div>
+
+    <button mat-icon-button> icon</button>
+    <button mat-fab> fab</button>
+    <button mat-mini-fab> Minifab</button>
+</div>
+
+<br>
+<div>
+    <mat-button-toggle #toggleBtn disableRipple>Toggle</mat-button-toggle>
+    {{toggleBtn.checked}}
+</div>
+
+<div>
+    <mat-button-toggle-group #toggleGroup="matButtonToggleGroup">
+        <mat-button-toggle value="angular">Angular</mat-button-toggle>
+        <mat-button-toggle value="angular1">Angular1</mat-button-toggle>
+        <mat-button-toggle value="angular2">Angular2</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    {{toggleGroup.value}}
+</div>
+
+<div>
+    <mat-icon color="primary">
+        grade
+    </mat-icon>
+</div>
+
+
+<div>
+    <span matBadge="5" matBadgeSize="small" matBadgeOverlap="false">Notify</span>
+</div>
+<div>
+    <span [matBadge]="notifications">
+notifications
+    </span>
+</div>
+
+
+<mat-progress-spinner value="40"></mat-progress-spinner>
+
+<mat-spinner *ngIf="showSpinner"></mat-spinner>
+<button (click)="loadData()">LoadData</button>
+
+
+<!-- navbar-->
+<mat-toolbar color="primary" class="navbar">
+    <div> codeEvolution</div>
+    <div>
+        <span>Home</span>
+        <span>About</span>
+        <span>Services</span>
+    </div>
+</mat-toolbar>
+
+
+<!-- side nav tool bar -->
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav (opened)="log('Opened')" 
+    (closed)="log('Closed')"
+    mode="side">
+        <!-- represent side content -->
+        sidenav
+    </mat-sidenav>
+    <mat-sidenav-content>Main 
+
+        <button (click)="opened=!opened">Toggle</button>
+        <button (click)="sidenav.open()">open</button>
+        <button (click)="sidenav.close()">Close</button>
+        <button (click)="sidenav.toggle()">Toggle</button>
+        <!-- contains main content inside container -->
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- mat menu models -->
+<mat-menu #appMenu="matMenu" xposition='after' yposition="above">
+    <button mat-menu-item [matMenuTriggerFor]="subMenu"   >Front end</button>
+    <button mat-menu-item>BackEnd</button>
+</mat-menu>
+<!-- need the button to activate or triggering the following -->
+<!-- appmenu is triggered by the matmenuTrigger -->
+<button  class="center"
+
+mat-flat-button [matMenuTriggerFor]="appMenu">Menu</button>
+
+<mat-menu #subMenu="matMenu">
+    <button mat-menu-item>Angular</button>
+    <button mat-menu-item> React</button>
+    <button mat-menu-item>Vue</button>
+</mat-menu>
+
+
+<mat-menu #lazyMenu="matMenu">
+
+    <ng-template matMenuContent let-name="name" let-hobby="hobby">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Hobby is {{hobby}}</button>
+        <button mat-menu-item> Log out {{name}}</button>
+    </ng-template>
+</mat-menu>
+
+<button mat-raised-button [matMenuTriggerData]="{name:'vishwas', hobby:'football'}" [matMenuTriggerFor]="lazyMenu">Vishwas</button>
+<button mat-raised-button [matMenuTriggerData]="{name:'codeEvolution',hobby:'music'}" [matMenuTriggerFor]="lazyMenu">codeEvolution</button>
+<!-- <mat-raised-button>what</mat-raised-button> -->
+<!-- <mat-button>new </mat-button> -->
+
+
+<!-- mat list component -->
+<mat-list dense> 
+    <!-- dense for font size reduces -->
+    <mat-list-item>Item 1</mat-list-item>    
+    <mat-list-item>Item 1</mat-list-item>    
+    <mat-list-item>Item 1</mat-list-item>    
+</mat-list>
+
+<!-- navbar list -->
+<mat-nav-list>
+    <a href="#" mat-list-item>Home</a>
+    <a href="#" mat-list-item>About</a>
+    <a href="#" mat-list-item>Services</a>
+</mat-nav-list>
+
+
+<mat-list>
+    <mat-list-item>
+        <mat-icon matListIcon>home</mat-icon>
+        <h3 matline>Heading</h3>
+        <p matline>Line</p>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+    <mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h3 matline>Heading</h3>
+        <p matline>Line</p>
+    </mat-list-item>
+</mat-list>
+
+
+
+
+<!-- Grid list -->
+<!-- col determined how many columns it taken -->
+<mat-grid-list cols="3" rowHeight="fit" style="height:200px" gutterSize="10px">
+    <mat-grid-tile rowspan="2">Tile 1</mat-grid-tile>
+    <mat-grid-tile>Tile 2</mat-grid-tile>
+    <mat-grid-tile>Tile 3</mat-grid-tile>
+    <mat-grid-tile>Tile 4</mat-grid-tile>
+</mat-grid-list>
+
+
+<!-- expansion panel -->
+<mat-accordion multi="true">
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <!-- contain title and header -->
+            <mat-panel-title>Angular Fundamentals</mat-panel-title>
+            <mat-panel-description> total Duration: 3 hours</mat-panel-description>
+            
+    </mat-expansion-panel-header>
+    this is the panel content ,add courses as you wish
+    <mat-action-row>
+        <button mat-button>Enroll</button> 
+    </mat-action-row>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <!-- contain title and header -->
+        <mat-panel-title>Angular materials</mat-panel-title>
+        <mat-panel-description> total Duration: 2 hours</mat-panel-description>
+        
+    </mat-expansion-panel-header>
+    this is the panel content ,add courses as you wish
+    <mat-action-row>
+        <button mat-button>Enroll</button> 
+        
+    </mat-action-row>
+</mat-expansion-panel>
+
+</mat-accordion>
+
+
+
+<!-- Mat tabs modules -->
+<mat-tab-group #tabRef (selectedTabChange)="logChange(tabRef.selectedIndex)"> 
+    <mat-tab  label="Angualr 12" > Angular</mat-tab>
+    <mat-tab label="React" >React</mat-tab>
+<mat-tab  label="Vue">Vue</mat-tab>
+    
+
+</mat-tab-group>
+{{tabRef.selectedIndex}}
+
+<!-- stepper modules  include linear for restrictions-->
+<mat-vertical-stepper linear>
+    <mat-step label="Shipping Adress" completed=true>Shipping address</mat-step>
+    <mat-step label="billing address" completed=false>Billing Address
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext> Next</button>
+        </div>
+    </mat-step>
+    <mat-step label ="Place order"> Order places</mat-step>
+</mat-vertical-stepper>
+
+
+<!-- matformfield and matinputmodule  -->
+<mat-form-field floatLabel="never" hideRequiredMarker appearance="legacy">
+     <!--never, always , auto option for the field-->
+    <mat-label>Name</mat-label>
+    <input type="text" matInput required> 
+    <mat-hint align="end">min  character </mat-hint>
+</mat-form-field>
+
+
+<mat-form-field floatLabel="never" hideRequiredMarker appearance="standard">
+    <!--never, always , auto option for the field-->
+   <mat-label>Name</mat-label>
+   <input type="text" matInput required> 
+   <mat-hint align="end">min  character </mat-hint>
+</mat-form-field>
+
+<mat-form-field floatLabel="never" hideRequiredMarker appearance="fill" color="ascent">
+    <!--never, always , auto option for the field-->
+   <mat-label>Name</mat-label>
+   <input type="text" matInput required> 
+   <mat-hint align="end">min  character </mat-hint>
+</mat-form-field>
+
+<mat-form-field floatLabel="never" hideRequiredMarker appearance="outline" color="warn">
+    <!--never, always , auto option for the field-->
+   <mat-label>Name</mat-label>
+   <input type="text" matInput required> 
+   <mat-hint align="end">min  character </mat-hint>
+</mat-form-field>
+
+
+<!-- mat select component -->
+<br><br>
+<mat-form-field>
+    <!-- using  two binding for the data  -->
+    <mat-label>Topic</mat-label>
+    <mat-select [(value)]="selectedValue" multiple>
+        <!-- <mat-option>None</mat-option>
+        <mat-option value="angular" >Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option> -->
+
+        <mat-optgroup label="Web">
+            <mat-option value="angular" >Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option>
+        </mat-optgroup>
+
+        <mat-optgroup label="Mobile">
+             
+        <mat-option value="iconic">iconic</mat-option>
+        <mat-option value="reactNative">React Native</mat-option>
+        </mat-optgroup>
+    </mat-select>
+</mat-form-field>
+{{selectedValue}}
+
+
+<!-- auto complete modules -->
+
+<form >
+    <mat-form-field>
+        <input type="text" matInput [matAutocomplete]="autos" [formControl]="myControl">
+        <mat-autocomplete #autos="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions |async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+
+<!-- mat  check box module -->
+<mat-checkbox>
+    subscribe
+</mat-checkbox>
+<br>
+<mat-checkbox labelPosition="before">
+    subscribe
+</mat-checkbox>
+
+<br>
+<mat-checkbox labelPosition="before" color="primary">
+    subscribe
+</mat-checkbox>
+
+<!-- radio group  use the double binding for the values -->
+<mat-radio-group>
+    <mat-radio-button value="angular" color="primary">Angular</mat-radio-button>
+    <mat-radio-button value="react" color="warn">React</mat-radio-button>
+    <mat-radio-button value="vue">Vue</mat-radio-button>
+
+</mat-radio-group>
+
+
+<!-- date picker -->
+<!-- <mat-form-field>
+    <input matInput [matDatePicker]="myDatePicker">
+    <mat-datepicker-toggle  [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker startview="multi-year"></mat-datepicker>
+</mat-form-field> -->
+
+
+
+<!-- mat tool tip  -->
+<button mat-raised-button matTooltip="welcome to code evolution"
+matTooltipPosition="after" 
+matTooltipShowDelay="2000"
+matTooltipHideDelay="2000"
+>Hello</button>
+
+<!-- snackbar module -->
+<button mat-button (click)="openSnackBar('Item deleted', 'Undo')">
+    Delete
+</button>
+
+<!-- dialog modules -->
+<button mat-raised-button (click)="openDialog()"> Open Dialog</button>
+
+<!-- mat dialog modules -->
+<h2 mat-dialog-title> Session Timeout</h2>
+<mat-dialog-content>You will be logout due to inactivity</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close mat-dialog-close="true">Keep me logged in </button>
+    <button mat-button mat-dialog-close mat-dialog-close="false"> Log out</button>
+
+</mat-dialog-actions>
+
+
+<!-- Data tool tips -->
+<!-- data source iss the table data and binding it to the table  -->
+
+<!-- creating for input of the filtering conditions -->
+<mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+        <!-- matcolumnDef must be same as the component ts properites  and mat sorce header for header-->
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- above one is for the column headers and the below one is the data in the row  -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+<!-- mat paginator -->
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons>
+
+</mat-paginator>
+  
+
+<!-- virtual scrolling -->
+
+<cdk-virtual-scroll-viewport itemSize="100" class="container">
+
+    <!-- <div *ngFor="let number of numbers" class="number"> -->
+        <div *cdkVirtualFor="let number of numbers" class="number">
+        {{number}}
+        </div>
+
+</cdk-virtual-scroll-viewport>
+
+
+
+<!-- <router-outlet></router-outlet>  -->
 
 <!-- <app-registration></app-registration> -->
 

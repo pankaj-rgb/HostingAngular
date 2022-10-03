@@ -1,0 +1,22 @@
+mat-grid-tile{
+    background-color: lightskyblue;
+}
+
+table {
+    width: 100%;
+  }
+
+  
+  .number{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid lightskyblue;
+      box-sizing: border-box;
+      height: 100px;
+  }
+
+  .container{
+      height: 400px;
+      
+  }
